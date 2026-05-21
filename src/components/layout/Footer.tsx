@@ -46,7 +46,7 @@ export default function Footer() {
             <div className="footer__col-title">Teams</div>
             <ul className="footer__col-links">
               {[
-                { to: '/teams/prime',       label: 'Moon Prime'       },
+                { to: '/teams/mothlings', label: 'MOON Mothlings' },
                 { to: '/teams/challengers', label: 'Moon Challengers' },
                 { to: '/teams/rising',      label: 'Moon Rising'      },
               ].map(({ to, label }) => (

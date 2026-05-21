@@ -1,50 +1,165 @@
 export type Role = 'Top' | 'Jungle' | 'Mid' | 'ADC' | 'Support';
 
+export interface PlayerSocials {
+  x?: string;
+  twitch?: string;
+  instagram?: string;
+  opgg?: string;
+  discord?: string;
+}
+
 export interface Player {
   id: string;
   gamertag: string;
-  realName: string;
-  role: Role;
-  nationality: string;
-  age: number;
+  realName?: string;
+  summonerName?: string;
+  role?: Role;
+  nationality?: string;
+  age?: number;
+  champion?: string;
+  skinId?: number;
+  skinName?: string;
+  splashImage?: string;
+  splashPosition?: string;
+  splashSize?: string;
+  socials?: PlayerSocials;
+  isSubstitute?: boolean;
+  staffRole?: string;
 }
 
 export interface Team {
   id: string;
   slug: string;
   name: string;
-  tier: 'Prime' | 'Challengers' | 'Rising';
+  tier: string;
   tagline: string;
   description: string;
   accentColor: string;
   founded: string;
   players: Player[];
   achievements: string[];
+  primeLeague?: { url: string; label: string };
 }
 
 export const teams: Team[] = [
   {
-    id: 'prime',
-    slug: 'prime',
-    name: 'Moon Prime',
-    tier: 'Prime',
-    tagline: 'Das Flaggschiff',
+    id: 'mothlings',
+    slug: 'mothlings',
+    name: 'MOON Mothlings',
+    tier: 'Noch keine Ligastufe',
+    tagline: 'Im Aufbau',
     description:
-      'Das Hauptteam von Moon Esports tritt in der Prime League an und repräsentiert die Organisation auf den größten Bühnen der DACH-Region.',
+      'MOON Mothlings ist ein neu gegründetes League-of-Legends-Team aus der DACH-Region. Das Team befindet sich im Aufbau und bereitet sich auf die ersten offiziellen Matches vor.',
     accentColor: '#82aee0',
-    founded: '2022',
+    founded: '2026',
     players: [
-      { id: 'p1', gamertag: 'Stellaris', realName: 'Maximilian Weber',  role: 'Top',     nationality: 'DE', age: 22 },
-      { id: 'p2', gamertag: 'DarkOrbit', realName: 'Jonas Klein',        role: 'Jungle',  nationality: 'DE', age: 20 },
-      { id: 'p3', gamertag: 'Luminae',   realName: 'Erik Hartmann',      role: 'Mid',     nationality: 'AT', age: 21 },
-      { id: 'p4', gamertag: 'Perigee',   realName: 'Leon Bauer',         role: 'ADC',     nationality: 'DE', age: 23 },
-      { id: 'p5', gamertag: 'Selene',    realName: 'Niklas Fischer',     role: 'Support', nationality: 'CH', age: 22 },
+      {
+        id: 'mem-pazu',
+        gamertag: 'Pazu',
+        summonerName: 'MOON Pazu#top',
+        role: 'Top',
+        nationality: 'DE',
+        champion: 'Ornn',
+        skinId: 20,
+        skinName: 'Choo-Choo Ornn',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ornn_20.jpg',
+        splashPosition: 'center',
+        socials: {
+          opgg: 'https://op.gg/de/lol/summoners/euw/MOON%20Pazu-top',
+        },
+      },
+      {
+        id: 'mem-oner',
+        gamertag: 'Oner',
+        summonerName: 'T1 Oner#KRT1',
+        role: 'Jungle',
+        nationality: 'DE',
+        champion: 'Aatrox',
+        skinId: 33,
+        skinName: 'Primordian Aatrox',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_33.jpg',
+        splashPosition: 'center',
+        socials: {
+          opgg: 'https://op.gg/de/lol/summoners/euw/T1%20Oner-KRT1',
+        },
+      },
+      {
+        id: 'mem-tomoe',
+        gamertag: 'Tomoe',
+        summonerName: 'MOON Tomoe#FRAUD',
+        role: 'Mid',
+        nationality: 'DE',
+        champion: 'Ahri',
+        skinId: 86,
+        skinName: 'Immortalized Legend Ahri',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_86.jpg',
+        splashPosition: 'center',
+        socials: {
+          opgg: 'https://op.gg/de/lol/summoners/euw/MOON%20Tomoe-FRAUD',
+        },
+      },
+      {
+        id: 'mem-znoosle',
+        gamertag: 'znoosle',
+        summonerName: 'moon znoosle#uwu',
+        role: 'ADC',
+        nationality: 'DE',
+        champion: 'Jinx',
+        skinId: 20,
+        skinName: 'PROJECT: Jinx',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jinx_20.jpg',
+        splashPosition: '42% 15%',
+        splashSize: '115%',
+        socials: {
+          opgg: 'https://op.gg/de/lol/summoners/euw/moon%20znoosle-uwu',
+        },
+      },
+      {
+        id: 'mem-ippondatara',
+        gamertag: 'Ippondatara',
+        summonerName: 'Ippondatara#enni',
+        role: 'Support',
+        nationality: 'DE',
+        champion: 'Bard',
+        skinId: 8,
+        skinName: 'Astronaut Bard',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Bard_8.jpg',
+        splashPosition: '48% center',
+        socials: {
+          opgg: 'https://op.gg/de/lol/summoners/euw/Ippondatara-enni',
+        },
+      },
+      {
+        id: 'mem-cori',
+        gamertag: 'Cori',
+        role: 'Support',
+        isSubstitute: true,
+        staffRole: 'Substitute',
+        nationality: 'DACH',
+        champion: 'Rakan',
+        skinId: 5,
+        skinName: 'Star Guardian Rakan',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Rakan_5.jpg',
+        splashPosition: '60% 28%',
+        splashSize: '130%',
+        socials: { opgg: '#' },
+      },
+      {
+        id: 'mem-hatou',
+        gamertag: 'Hatou',
+        realName: 'Torben',
+        staffRole: 'Head Coach',
+        nationality: 'DACH',
+        champion: 'Caitlyn',
+        skinId: 22,
+        skinName: 'Battle Academia Caitlyn',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_22.jpg',
+        splashPosition: 'center center',
+        socials: { opgg: '#' },
+      },
     ],
-    achievements: [
-      'Prime League Spring 2024 – Top 4',
-      'ERL Masters 2024 – Qualifier',
-      'Prime League Summer 2023 – Playoffs',
-    ],
+    achievements: [],
+    primeLeague: { url: 'https://www.primeleague.gg/de/leagues/teams/212210-mothlings', label: 'Prime League' },
   },
   {
     id: 'challengers',
@@ -57,15 +172,55 @@ export const teams: Team[] = [
     accentColor: '#c9a448',
     founded: '2023',
     players: [
-      { id: 'c1', gamertag: 'Vanguard',   realName: 'Tim Schneider', role: 'Top',     nationality: 'DE', age: 19 },
-      { id: 'c2', gamertag: 'Phasewalk',  realName: 'Ben Müller',    role: 'Jungle',  nationality: 'AT', age: 18 },
-      { id: 'c3', gamertag: 'Zephyros',   realName: 'Felix Wagner',  role: 'Mid',     nationality: 'DE', age: 20 },
-      { id: 'c4', gamertag: 'Nightfall',  realName: 'Lars Braun',    role: 'ADC',     nationality: 'DE', age: 19 },
-      { id: 'c5', gamertag: 'Aether',     realName: 'Paul Richter',  role: 'Support', nationality: 'CH', age: 21 },
+      {
+        id: 'c1', gamertag: 'Vanguard', realName: 'Tim Schneider',
+        role: 'Top', nationality: 'DE', age: 19,
+        champion: 'Sett', skinId: 1, skinName: 'Mecha Kingdoms Sett',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sett_1.jpg',
+        splashPosition: 'center',
+      },
+      {
+        id: 'c2', gamertag: 'Phasewalk', realName: 'Ben Müller',
+        role: 'Jungle', nationality: 'AT', age: 18,
+        champion: 'LeeSin', skinId: 11, skinName: 'God Fist Lee Sin',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/LeeSin_11.jpg',
+        splashPosition: '42% center',
+        splashSize: '1.1',
+      },
+      {
+        id: 'c3', gamertag: 'Zephyros', realName: 'Felix Wagner',
+        role: 'Mid', nationality: 'DE', age: 20,
+        champion: 'Zed', skinId: 3, skinName: 'PROJECT: Zed',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Zed_3.jpg',
+        splashPosition: 'center',
+      },
+      {
+        id: 'c4', gamertag: 'Nightfall', realName: 'Lars Braun',
+        role: 'ADC', nationality: 'DE', age: 19,
+        champion: 'Caitlyn', skinId: 11, skinName: 'Pulsefire Caitlyn',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_11.jpg',
+        splashPosition: '55% center',
+      },
+      {
+        id: 'c5', gamertag: 'Aether', realName: 'Paul Richter',
+        role: 'Support', nationality: 'CH', age: 21,
+        champion: 'Thresh', skinId: 3, skinName: 'Blood Moon Thresh',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_3.jpg',
+        splashPosition: '60% center',
+      },
+      {
+        id: 'c6', gamertag: 'Phantom', realName: 'David Lorenz',
+        role: 'Mid', nationality: 'DE', age: 19,
+        champion: 'Sylas', skinId: 1, skinName: 'Lunar Wraith Sylas',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sylas_1.jpg',
+        splashPosition: 'center',
+        isSubstitute: true,
+      },
     ],
     achievements: [
       'Prime League Division 2 2024 – Aufstiegsplayoffs',
     ],
+    primeLeague: { url: '#', label: 'Prime League' },
   },
   {
     id: 'rising',
@@ -78,13 +233,45 @@ export const teams: Team[] = [
     accentColor: '#72c4a0',
     founded: '2024',
     players: [
-      { id: 'r1', gamertag: 'Solstice', realName: 'Finn Hoffmann', role: 'Top',     nationality: 'DE', age: 17 },
-      { id: 'r2', gamertag: 'Eclipse',  realName: 'Nico Schwartz', role: 'Jungle',  nationality: 'DE', age: 18 },
-      { id: 'r3', gamertag: 'Meridian', realName: 'Tom Krause',    role: 'Mid',     nationality: 'AT', age: 17 },
-      { id: 'r4', gamertag: 'Nadir',    realName: 'Jan Vogt',      role: 'ADC',     nationality: 'DE', age: 18 },
-      { id: 'r5', gamertag: 'Apogee',   realName: 'Lukas Wolf',    role: 'Support', nationality: 'DE', age: 17 },
+      {
+        id: 'r1', gamertag: 'Solstice', realName: 'Finn Hoffmann',
+        role: 'Top', nationality: 'DE', age: 17,
+        champion: 'Darius', skinId: 15, skinName: 'God-King Darius',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Darius_15.jpg',
+        splashPosition: '48% center',
+      },
+      {
+        id: 'r2', gamertag: 'Eclipse', realName: 'Nico Schwartz',
+        role: 'Jungle', nationality: 'DE', age: 18,
+        champion: 'Hecarim', skinId: 4, skinName: 'Arcade Hecarim',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Hecarim_4.jpg',
+        splashPosition: '45% center',
+      },
+      {
+        id: 'r3', gamertag: 'Meridian', realName: 'Tom Krause',
+        role: 'Mid', nationality: 'AT', age: 17,
+        champion: 'Orianna', skinId: 7, skinName: 'Dark Star Orianna',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Orianna_7.jpg',
+        splashPosition: 'center',
+        splashSize: '1.1',
+      },
+      {
+        id: 'r4', gamertag: 'Nadir', realName: 'Jan Vogt',
+        role: 'ADC', nationality: 'DE', age: 18,
+        champion: 'Ezreal', skinId: 18, skinName: 'Star Guardian Ezreal',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ezreal_18.jpg',
+        splashPosition: '52% center',
+      },
+      {
+        id: 'r5', gamertag: 'Apogee', realName: 'Lukas Wolf',
+        role: 'Support', nationality: 'DE', age: 17,
+        champion: 'Janna', skinId: 7, skinName: 'Star Guardian Janna',
+        splashImage: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Janna_7.jpg',
+        splashPosition: 'center',
+      },
     ],
     achievements: [],
+    primeLeague: { url: '#', label: 'Prime League' },
   },
 ];
 

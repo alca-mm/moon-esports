@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(npm test *)"
+      "PowerShell(npm test *)",
+      "Bash(npm test *)",
+      "Bash(npm run *)",
+      "WebFetch(domain:ddragon.leagueoflegends.com)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot"
     ]
   }
 }

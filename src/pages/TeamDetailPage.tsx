@@ -39,10 +39,23 @@ export default function TeamDetailPage() {
             {team.name}
           </h1>
           <p className="page-hero__sub">{team.tagline} — {team.description}</p>
+          {team.primeLeague && (
+            <a
+              href={team.primeLeague.url}
+              className="prime-league-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {team.primeLeague.label} ↗
+            </a>
+          )}
         </div>
       </div>
 
-      <section className="section">
+      <section
+        className="section"
+        style={{ '--team-accent': team.accentColor } as React.CSSProperties}
+      >
         <div className="container">
           <div className="team-meta-row">
             <div className="team-meta-item">
@@ -64,11 +77,27 @@ export default function TeamDetailPage() {
           </div>
 
           <SectionHeading label="Kader" title="Die Spieler" />
-          <div className="players-grid">
-            {team.players.map((player) => (
-              <PlayerCard key={player.id} player={player} />
-            ))}
-          </div>
+          {(() => {
+            const starters = team.players.filter(p => !p.isSubstitute && !p.staffRole);
+            const extras   = team.players.filter(p =>  p.isSubstitute || !!p.staffRole);
+            return (
+              <>
+                <div className="players-grid">
+                  {starters.map(player => <PlayerCard key={player.id} player={player} />)}
+                </div>
+                {extras.length > 0 && (
+                  <>
+                    <div className="roster-section-divider">
+                      <span className="roster-section-divider__label">Substitutes &amp; Staff</span>
+                    </div>
+                    <div className="players-grid">
+                      {extras.map(player => <PlayerCard key={player.id} player={player} />)}
+                    </div>
+                  </>
+                )}
+              </>
+            );
+          })()}
 
           {team.achievements.length > 0 && (
             <div style={{ marginTop: '4rem' }}>

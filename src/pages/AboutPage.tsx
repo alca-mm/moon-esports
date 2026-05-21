@@ -48,7 +48,7 @@ export default function AboutPage() {
           <p className="about-body">
             Mit drei Teams auf unterschiedlichen Leistungsebenen bieten wir Talenten in
             jeder Phase ihrer Karriere einen Platz. Von Moon Rising, wo junge Spieler
-            erstmals strukturiert gefördert werden, bis zu Moon Prime, das auf höchstem
+            erstmals strukturiert gefördert werden, bis zu Moon Esports Main, das auf höchstem
             nationalem Niveau antritt.
           </p>
           <p className="about-body">
