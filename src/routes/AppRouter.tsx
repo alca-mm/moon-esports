@@ -10,7 +10,7 @@ import NotFoundPage from '../pages/NotFoundPage';
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/moon-esports">
       <Routes>
         <Route path="/"               element={<HomePage />} />
         <Route path="/teams"          element={<TeamsPage />} />
