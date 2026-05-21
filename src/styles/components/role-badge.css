@@ -1,0 +1,20 @@
+/* ── Role Badge ─────────────────────────────── */
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 3px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+.role-badge--Top     { background: rgba(18,6,6,0.82);   color: #ff9494; border: 1px solid rgba(220,80,80,0.6);  text-shadow: 0 0 10px rgba(220,80,80,0.7); }
+.role-badge--Jungle  { background: rgba(6,16,6,0.82);   color: #7edd88; border: 1px solid rgba(70,180,85,0.6);  text-shadow: 0 0 10px rgba(70,180,85,0.7); }
+.role-badge--Mid     { background: rgba(6,10,22,0.82);  color: #a0bcff; border: 1px solid rgba(90,130,230,0.6); text-shadow: 0 0 10px rgba(90,130,230,0.7); }
+.role-badge--ADC     { background: rgba(18,14,4,0.82);  color: #f2cc58; border: 1px solid rgba(210,165,45,0.6); text-shadow: 0 0 10px rgba(210,165,45,0.7); }
+.role-badge--Support { background: rgba(12,6,20,0.82);  color: #d49afc; border: 1px solid rgba(175,90,235,0.6); text-shadow: 0 0 10px rgba(175,90,235,0.7); }

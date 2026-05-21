@@ -1,0 +1,50 @@
+/* ── Team Detail ────────────────────────────── */
+.team-detail-band {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.team-detail-accent-bar {
+  width: 4px;
+  border-radius: 2px;
+  background: var(--team-accent, var(--c-accent));
+  align-self: stretch;
+  min-height: 60px;
+}
+.team-meta-row {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.team-meta-item__value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--c-moon);
+  line-height: 1.1;
+}
+.team-meta-item__key {
+  font-size: 0.72rem;
+  color: var(--c-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: var(--font-display);
+}
+.achievements-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--c-text-2);
+}
+.achievement-item::before {
+  content: '◆';
+  color: var(--c-gold);
+  font-size: 0.45rem;
+  flex-shrink: 0;
+}

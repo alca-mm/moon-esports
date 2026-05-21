@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { type Player, type PlayerSocials } from '../../data/teams';
+import { type Player, type PlayerSocials } from '../../types/teams';
 import RoleBadge from './RoleBadge';
 
 interface PlayerCardProps {

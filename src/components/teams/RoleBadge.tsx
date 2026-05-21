@@ -1,4 +1,4 @@
-import { type Role } from '../../data/teams';
+import { type Role } from '../../types/teams';
 
 interface RoleBadgeProps {
   role: Role;

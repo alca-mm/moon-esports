@@ -1,0 +1,60 @@
+/* ── Contact Page ───────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
+}
+.contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-info-item { display: flex; gap: 1rem; align-items: flex-start; }
+.contact-info-item__icon {
+  width: 42px; height: 42px;
+  border-radius: var(--radius);
+  background: var(--c-accent-gl);
+  border: 1px solid var(--c-border-2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--c-accent-2);
+  font-size: 1.1rem;
+}
+.contact-info-item__label {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-text-2);
+  margin-bottom: 0.25rem;
+}
+.contact-info-item__value { font-size: 0.9rem; color: var(--c-text); }
+.contact-form {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--rad-lg);
+  padding: 2.5rem;
+}
+.form-group { margin-bottom: 1.5rem; }
+.form-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-text-2);
+  margin-bottom: 0.5rem;
+}
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: var(--c-bg-deep);
+  border: 1px solid var(--c-border-2);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: border-color var(--ease);
+}
+.form-input:focus, .form-textarea:focus { outline: none; border-color: var(--c-accent); }
+.form-textarea { min-height: 120px; resize: vertical; }

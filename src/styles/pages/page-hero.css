@@ -1,0 +1,47 @@
+/* ── Page Hero (inner pages) ────────────────── */
+.page-hero {
+  padding: calc(var(--nav-h) + 4rem) 0 4rem;
+  background: linear-gradient(180deg, var(--c-bg-deep), var(--c-bg));
+  border-bottom: 1px solid var(--c-border);
+}
+.page-hero__eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  display: block;
+  margin-bottom: 1rem;
+}
+.page-hero__title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 0.75rem;
+}
+.page-hero__sub {
+  font-size: 1.05rem;
+  color: var(--c-text-2);
+  max-width: 520px;
+}
+.prime-league-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.25rem;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--team-accent, var(--c-accent));
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  opacity: 0.6;
+  transition: opacity var(--ease), background var(--ease);
+}
+.prime-league-link:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
+}

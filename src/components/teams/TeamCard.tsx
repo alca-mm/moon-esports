@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { type Team } from '../../data/teams';
+import { type Team } from '../../types/teams';
 
 interface TeamCardProps {
   team: Team;
