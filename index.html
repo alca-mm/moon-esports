@@ -2,6 +2,21 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // GitHub Pages SPA redirect — restores path encoded by 404.html
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('?');
+          window.history.replaceState(
+            null, null,
+            l.pathname.slice(0, -1) +
+            decoded[0].replace(/~and~/g, '&') +
+            (decoded[1] ? '?' + decoded[1].replace(/~and~/g, '&') : '') +
+            l.hash
+          );
+        }
+      }(window.location));
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Moon Esports – Professionelle League-of-Legends-Organisation mit drei Teams." />
