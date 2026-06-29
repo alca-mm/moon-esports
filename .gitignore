@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Markdown policy: only the root README.md may be tracked on GitHub.
+# Every other Markdown file (subfolder READMEs, local change/analysis notes) stays local and untracked.
+*.md
+!/README.md
+
+# Local change/analysis notes under docs/changes/ — keep on disk for reference, never commit.
+# (Already covered by *.md above; listed explicitly to document intent.)
+docs/changes/*.md
