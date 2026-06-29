@@ -1,73 +1,153 @@
-# React + TypeScript + Vite
+# Moon Esports
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Static marketing SPA for **Moon Esports**, a League of Legends esports organisation from the DACH region. The site presents three teams and their rosters. There is no backend and no API layer — all team data lives in `src/data/teams.ts`.
 
-Currently, two official plugins are available:
+Live: <https://alca-mm.github.io/moon-esports/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Version: **0.2.0**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+| Concern | Tool |
+|---|---|
+| UI | React 19 |
+| Routing | React Router DOM 7 |
+| Language | TypeScript ~6 |
+| Build / Dev server | Vite 8 |
+| Unit / component tests | Vitest 4 + React Testing Library + jsdom |
+| E2E tests | Playwright (Chromium) |
+| Coverage | @vitest/coverage-v8 |
+| Linting | ESLint 10 |
+| Hosting | GitHub Pages (via GitHub Actions) |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```
+src/
+  pages/           # Route-level pages
+  │  HomePage, TeamsPage, TeamDetailPage, AboutPage,
+  │  ContactPage, ImpressumPage, DatenschutzPage, NotFoundPage
+  │
+  components/
+  │  layout/       # Navbar, Footer, PageShell
+  │  sections/     # Hero, TeamPreview, AboutPreview, ContactCta
+  │  teams/        # TeamCard, PlayerCard, RoleBadge
+  │  ui/           # Button, SectionHeading
+  │
+  routes/
+  │  AppRouter.tsx # React Router routes (basename="/moon-esports")
+  │
+  data/
+  │  teams.ts      # Static team/player data, getTeamBySlug(),
+  │                #   dev-time validateTeamsData() guard
+  types/
+     teams.ts      # Shared types: Team, Player, Role, …
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+e2e/               # Playwright smoke specs
+public/            # Static assets (favicon, 404.html SPA redirect)
+.github/workflows/
+   deploy.yml      # CI: build + lint + test → GitHub Pages
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Requirements:** Node 20+
+
+```bash
+npm install
 ```
+
+For E2E tests, install the Playwright Chromium browser once:
+
+```bash
+npx playwright install chromium
+```
+
+No secrets or `.env` files are required — this is a purely static site.
+
+---
+
+## Development
+
+```bash
+npm run dev        # Start Vite dev server with HMR
+```
+
+---
+
+## Testing
+
+### Unit / Component Tests
+
+```bash
+npm test               # Run all Vitest tests (non-watching)
+npm run test:watch     # Vitest in watch mode
+```
+
+### Coverage
+
+```bash
+npm run test:coverage  # Vitest run --coverage (V8)
+```
+
+Output is written to `coverage/` (gitignored). No coverage thresholds are enforced.
+
+### E2E Tests
+
+```bash
+npm run test:e2e       # Playwright (Chromium), headless
+npm run test:e2e:ui    # Playwright UI mode
+```
+
+---
+
+## Type Checking
+
+```bash
+npm run typecheck   # tsc -b (no emit)
+```
+
+---
+
+## Linting
+
+```bash
+npm run lint        # ESLint 10
+```
+
+---
+
+## Build & Preview
+
+```bash
+npm run build      # tsc -b && vite build → dist/
+npm run preview    # Serve the production build locally (vite preview)
+```
+
+---
+
+## Deployment (GitHub Pages)
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which:
+
+1. Builds the project
+2. Runs lint and tests
+3. Publishes `dist/` to GitHub Pages
+
+The app is served under the base path `/moon-esports/`. This basename is set in `vite.config.ts` (`base`) and in `AppRouter.tsx` (`basename`). Do not change these values.
+
+Deep-link routing on GitHub Pages (SPA fallback) is handled by `public/404.html` together with a redirect snippet in `index.html`.
+
+---
+
+## Markdown / Docs Policy
+
+Only the root `README.md` may be committed to the repository. The `.gitignore` ignores all other `*.md` files (via a `*.md` rule with a `!/README.md` negation). A guard in the deploy workflow fails the CI build if any Markdown file other than `./README.md` is present in the checkout.
+
+Local change notes and analysis documents live under `docs/changes/*.md` and remain on disk only — they are never committed.

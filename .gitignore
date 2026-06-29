@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Test / coverage / E2E output (never committed)
+coverage
+/playwright-report/
+/test-results/
+/playwright/.cache/
+.playwright-mcp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
